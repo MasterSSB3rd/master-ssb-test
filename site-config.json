@@ -55,6 +55,12 @@
     },
     "announcements": [
         {
+            "image": "announcement-4.jpg",
+            "titleEn": "Register for the current lecture (prestigious lectures)",
+            "titleFr": "S'inscrire à la conférence en cours (conférences de prestige)",
+            "link": "https://masterssb3rd.github.io/register/"
+        },
+        {
             "image": "announcement-1.jpg",
             "titleEn": "Welcome to our community",
             "titleFr": "Bienvenue dans notre communauté",
@@ -71,12 +77,6 @@
             "titleEn": "Join to our Linkedin",
             "titleFr": "Rejoignez-nous sur LinkedIn",
             "link": "https://www.linkedin.com/company/master-sciences-de-la-sant%C3%A9-et-biotechnologies-fsac/"
-        },
-        {
-            "image": "announcement-4.jpg",
-            "titleEn": "Register for the current lecture (prestigious lectures)",
-            "titleFr": "S'inscrire à la conférence en cours (conférences de prestige)",
-            "link": "https://masterssb3rd.github.io/register/"
         }
     ]
 }
