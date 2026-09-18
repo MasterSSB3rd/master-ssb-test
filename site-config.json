@@ -31,7 +31,16 @@
             "years": "2025 - 2027",
             "pdfEnabled": false,
             "images": [
-                "promo-3-pic-1.jpg"
+                "promo-3-pic-1.jpg",
+                "promo-3-pic-2.jpg",
+                "promo-3-pic-3.jpg",
+                "promo-3-pic-4.jpg",
+                "promo-3-pic-5.jpg",
+                "promo-3-pic-6.jpg",
+                "promo-3-pic-7.jpg",
+                "promo-3-pic-8.jpg",
+                "promo-3-pic-9.jpg",
+                "promo-3-pic-10.jpg"
             ]
         }
     },
