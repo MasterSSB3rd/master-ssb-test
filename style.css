@@ -931,3 +931,35 @@ nav {
     .announcement-nav { width: 36px; height: 36px; font-size: 0.9rem; }
     .announcement-caption { padding: 20px; }
 }
+/* ==========================================================
+   Announcements carousel – 16:9, centered
+   Append at the END of the master site's style.css
+   ========================================================== */
+#announcements .announcement-carousel {
+    width: 100%;
+    max-width: 960px;          /* change this to make the banner bigger/smaller */
+    margin-left: auto;
+    margin-right: auto;        /* centered in the page */
+}
+
+#announcements .announcement-slide {
+    position: relative;
+    width: 100%;
+    height: auto;              /* cancel any old fixed height */
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 16 / 9;      /* the important line */
+    overflow: hidden;
+    border-radius: 16px;
+    background: #001a33;       /* bars shown when an image isn't exactly 16:9 */
+}
+
+#announcements .announcement-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;       /* whole image visible. Use "cover" to fill and crop instead */
+    display: block;
+}
