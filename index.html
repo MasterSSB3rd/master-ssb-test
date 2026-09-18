@@ -71,6 +71,12 @@
                         <span id="announcement-title-fr" class="lang-fr" style="display:none;"></span>
                         <i class="fas fa-arrow-up-right-from-square"></i>
                     </a>
+
+                    <!-- ADD FROM HERE -->
+                    <a id="announcement-btn-link" href="#" target="_blank" rel="noopener" class="announcement-btn">
+                        <span class="lang-en">Click here</span>
+                        <span class="lang-fr" style="display:none;">Cliquez ici</span>
+                    </a>
                 </div>
                 <button class="announcement-nav prev" onclick="changeAnnouncement(-1, true)" aria-label="Previous">
                     <i class="fas fa-chevron-left"></i>
@@ -600,6 +606,10 @@
                 document.getElementById('announcement-title-en').textContent = a.titleEn || '';
                 document.getElementById('announcement-title-fr').textContent = a.titleFr || '';
                 document.getElementById('announcement-title-link').href = a.link || '#';
+// ADD THESE 3 LINES
+const btnLink = document.getElementById('announcement-btn-link');
+btnLink.href = a.link || '#';
+btnLink.style.display = a.link ? '' : 'none';
                 img.style.opacity = 1;
             }, 300);
 
