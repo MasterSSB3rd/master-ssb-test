@@ -68,9 +68,9 @@
         },
         {
             "image": "announcement-3.jpg",
-            "titleEn": "",
-            "titleFr": "",
-            "link": ""
+            "titleEn": "Join to our Linkedin",
+            "titleFr": "Rejoignez-nous sur LinkedIn",
+            "link": "https://www.linkedin.com/company/master-sciences-de-la-sant%C3%A9-et-biotechnologies-fsac/"
         }
     ]
 }
