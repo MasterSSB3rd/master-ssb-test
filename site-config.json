@@ -34,9 +34,9 @@
     "announcements": [
         {
             "image": "announcement-1.jpg",
-            "titleEn": "",
-            "titleFr": "",
-            "link": ""
+            "titleEn": "Welcome to our community",
+            "titleFr": "Bienvenue dans notre communauté",
+            "link": "https://discord.gg/KPh8cdHZYS"
         }
     ]
 }
