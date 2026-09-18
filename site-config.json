@@ -5,7 +5,7 @@
             "labelEn": "1st Class",
             "labelFr": "1ère Promotion",
             "years": "2023 - 2025",
-            "pdfEnabled": true,
+            "pdfEnabled": false,
             "images": [
                 "promo-1-pic-1.jpg"
             ]
@@ -15,7 +15,7 @@
             "labelEn": "2nd Class",
             "labelFr": "2ème Promotion",
             "years": "2024 - 2026",
-            "pdfEnabled": true,
+            "pdfEnabled": false,
             "images": [
                 "promo-2-pic-1.jpg"
             ]
@@ -31,5 +31,12 @@
             ]
         }
     },
-    "announcements": []
+    "announcements": [
+        {
+            "image": "announcement-1.jpg",
+            "titleEn": "",
+            "titleFr": "",
+            "link": ""
+        }
+    ]
 }
