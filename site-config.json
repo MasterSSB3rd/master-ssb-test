@@ -25,7 +25,7 @@
             "labelEn": "3rd Class",
             "labelFr": "3ème Promotion",
             "years": "2025 - 2027",
-            "pdfEnabled": true,
+            "pdfEnabled": false,
             "images": [
                 "promo-3-pic-1.jpg"
             ]
