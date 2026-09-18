@@ -1,0 +1,26 @@
+{
+    "promo1": {
+        "number": 1,
+        "labelEn": "1st Class",
+        "labelFr": "1ère Promotion",
+        "years": "2023 - 2025",
+        "pdfEnabled": true,
+        "images": ["promo-1-pic-1.jpg"]
+    },
+    "promo2": {
+        "number": 2,
+        "labelEn": "2nd Class",
+        "labelFr": "2ème Promotion",
+        "years": "2024 - 2026",
+        "pdfEnabled": true,
+        "images": ["promo-2-pic-1.jpg"]
+    },
+    "promo3": {
+        "number": 3,
+        "labelEn": "3rd Class",
+        "labelFr": "3ème Promotion",
+        "years": "2025 - 2027",
+        "pdfEnabled": true,
+        "images": ["promo-3-pic-1.jpg"]
+    }
+}
