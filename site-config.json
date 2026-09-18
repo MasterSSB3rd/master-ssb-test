@@ -65,6 +65,12 @@
             "titleEn": "Join to our instagram",
             "titleFr": "Rejoignez-nous sur Instagram",
             "link": "https://www.instagram.com/master_ssb_fsac/"
+        },
+        {
+            "image": "announcement-3.jpg",
+            "titleEn": "",
+            "titleFr": "",
+            "link": ""
         }
     ]
 }
