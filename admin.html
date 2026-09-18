@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Master SSB</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+    body { background: var(--bg-light); }
+    .admin-wrap { max-width: 900px; margin: 0 auto; padding: 40px 5% 120px; }
+    .admin-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 10px; }
+    .admin-title h1 { color: var(--primary-blue); font-size: 1.8rem; }
+    .admin-title a { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    .admin-title a:hover { text-decoration: underline; }
+
+    .admin-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        box-shadow: var(--card-shadow);
+        padding: 25px 28px;
+        margin-bottom: 24px;
+    }
+
+    .admin-card h2 { color: var(--primary-blue); margin-bottom: 12px; font-size: 1.3rem; }
+    .admin-hint { font-size: 0.85rem; color: var(--text-muted); margin-top: 14px; }
+    .admin-hint i { color: var(--accent-blue); margin-right: 6px; }
+    .admin-hint a { color: var(--accent-blue); }
+
+    .admin-field-row { margin-bottom: 14px; }
+    .admin-field-row label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+    .admin-field-row input[type="text"],
+    .admin-field-row input[type="password"] {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-body);
+        color: var(--text-color);
+        font-size: 0.95rem;
+    }
+    .admin-field-row input:focus { outline: 2px solid var(--accent-blue); }
+
+    .admin-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .admin-card-header h3 { color: var(--primary-blue); font-size: 1.15rem; }
+    .admin-key { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
+
+    .admin-icon-btn {
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+    }
+    .admin-icon-btn:hover { background: var(--border-color); }
+    .admin-icon-btn.danger { color: #c0392b; }
+    .admin-icon-btn.danger:hover { background: #c0392b; color: #fff; }
+    .admin-icon-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .admin-toggle-row { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+    .admin-toggle-row span { font-size: 0.92rem; }
+    .admin-toggle-row em { color: var(--text-muted); font-style: normal; font-size: 0.85rem; }
+
+    .switch { position: relative; display: inline-block; width: 46px; height: 26px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch .slider {
+        position: absolute; cursor: pointer; inset: 0;
+        background: #ccc; border-radius: 26px; transition: 0.2s;
+    }
+    .switch .slider::before {
+        content: ""; position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px;
+        background: white; border-radius: 50%; transition: 0.2s;
+    }
+    .switch input:checked + .slider { background: var(--accent-blue); }
+    .switch input:checked + .slider::before { transform: translateX(20px); }
+    .switch input:disabled + .slider { opacity: 0.4; cursor: not-allowed; }
+
+    .admin-section { border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 16px; }
+    .admin-section-title { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary-blue); margin-bottom: 12px; }
+    .admin-section-title i { color: var(--accent-blue); }
+
+    .status-pill { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .status-on { background: #d4edda; color: #1e7e34; }
+    .status-off { background: #f8d7da; color: #a71d2a; }
+    body.dark-mode .status-on { background: #1e3d24; color: #7fdb99; }
+    body.dark-mode .status-off { background: #3d1e1e; color: #ff9b9b; }
+
+    .admin-pdf-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .upload-btn {
+        background: var(--accent-gradient);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s ease;
+    }
+    .upload-btn:hover { transform: translateY(-2px); }
+
+    .admin-thumb-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .admin-thumb {
+        position: relative;
+        width: 90px; height: 90px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background: var(--bg-light);
+    }
+    .admin-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .admin-thumb-delete {
+        position: absolute; top: 4px; right: 4px;
+        width: 22px; height: 22px; border-radius: 50%;
+        background: rgba(0,0,0,0.6); color: #fff; border: none;
+        cursor: pointer; font-size: 0.75rem;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .admin-thumb-delete:hover { background: #c0392b; }
+    .admin-thumb-add {
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; color: var(--accent-blue);
+        border: 2px dashed var(--border-color);
+        font-size: 1.4rem;
+        background: transparent;
+    }
+    .admin-thumb-add:hover { border-color: var(--accent-blue); }
+
+    .save-bar {
+        position: fixed; bottom: 0; left: 0; right: 0;
+        background: var(--bg-card);
+        border-top: 1px solid var(--border-color);
+        padding: 14px 5%;
+        display: flex; align-items: center; justify-content: space-between;
+        box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+        z-index: 500;
+    }
+    .save-bar #save-status { color: var(--text-muted); font-size: 0.9rem; }
+    .save-bar.dirty #save-status { color: #c0392b; font-weight: 600; }
+    .save-bar button {
+        background: var(--accent-gradient); color: #fff; border: none;
+        padding: 10px 26px; border-radius: 50px; font-weight: 700; cursor: pointer;
+    }
+    .save-bar button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .log-panel {
+        margin-top: 30px;
+        background: #0d1117;
+        color: #c9d1d9;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-family: 'Consolas', monospace;
+        font-size: 0.8rem;
+        max-height: 220px;
+        overflow-y: auto;
+    }
+    .log-line { padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .log-success { color: #7fdb99; }
+    .log-error { color: #ff9b9b; }
+    .log-warn { color: #ffd479; }
+    .log-info { color: #8ec9ff; }
+
+    .top-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+
+    .admin-section-heading {
+        display: flex; align-items: center; gap: 10px;
+        margin: 34px 0 16px;
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+    .admin-section-heading i { color: var(--accent-blue); }
+    .admin-section-heading .admin-count-pill {
+        background: var(--accent-blue); color: #fff; font-size: 0.75rem;
+        padding: 2px 10px; border-radius: 20px; font-weight: 700;
+    }
+
+    .announcement-admin-thumb {
+        width: 100%; height: 140px; object-fit: cover; border-radius: 10px;
+        margin-bottom: 14px; background: var(--bg-light);
+    }
+
+    .admin-order-btns { display: flex; flex-direction: column; gap: 4px; }
+    .admin-order-btns button {
+        background: var(--bg-light); border: 1px solid var(--border-color); color: var(--text-color);
+        width: 28px; height: 24px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;
+    }
+    .admin-order-btns button:hover { background: var(--border-color); }
+    .admin-order-btns button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .announcement-card-layout { display: flex; gap: 16px; }
+    .announcement-card-layout .admin-order-btns { flex-shrink: 0; padding-top: 4px; }
+    .announcement-card-layout .announcement-card-body { flex: 1; min-width: 0; }
+</style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Master SSB" class="nav-logo">
+            <span>Master SSB — Admin</span>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="toggleTheme()" class="lang-btn" id="theme-btn">
+                <span id="theme-text">Dark</span> <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="admin-wrap">
+        <div class="admin-title">
+            <h1><i class="fas fa-toolbox"></i> Site Admin</h1>
+            <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View live site</a>
+        </div>
+
+        <!-- CONNECT PANEL -->
+        <div id="connect-panel" class="admin-card">
+            <h2><i class="fab fa-github"></i> Connect to GitHub</h2>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:16px;">
+                This panel edits your site's files directly in your GitHub repository (photos, PDFs, and
+                <code>site-config.json</code>). Changes go live as soon as GitHub Pages rebuilds — usually within a minute.
+            </p>
+
+            <div class="admin-field-row">
+                <label>GitHub username or organization</label>
+                <input id="gh-owner" type="text" placeholder="e.g. your-username">
+            </div>
+            <div class="admin-field-row">
+                <label>Repository name</label>
+                <input id="gh-repo" type="text" placeholder="e.g. master-ssb-site">
+            </div>
+            <div class="admin-field-row">
+                <label>Branch</label>
+                <input id="gh-branch" type="text" value="main">
+            </div>
+            <div class="admin-field-row">
+                <label>Personal Access Token</label>
+                <input id="gh-token" type="password" placeholder="github_pat_...">
+            </div>
+
+            <button class="btn" onclick="connect()"><i class="fas fa-plug"></i> Connect</button>
+
+            <p class="admin-hint">
+                <i class="fas fa-shield-alt"></i>
+                Use a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">fine-grained token</a>
+                scoped to <strong>only this repository</strong> with <strong>Contents: Read and write</strong> permission.
+                It's kept only in this browser tab (cleared when the tab closes) and sent directly to GitHub — never anywhere else.
+                Don't share this admin page publicly, since anyone with your token could edit the site.
+            </p>
+        </div>
+
+        <!-- ADMIN APP (shown after connecting) -->
+        <div id="admin-app" style="display:none;">
+            <div class="top-actions">
+                <button class="admin-icon-btn" onclick="addPromotion()"><i class="fas fa-plus"></i> Add New Promotion</button>
+                <button class="admin-icon-btn" onclick="addAnnouncement()"><i class="fas fa-bullhorn"></i> Add Announcement</button>
+                <button class="admin-icon-btn" onclick="refreshAll()"><i class="fas fa-sync"></i> Refresh</button>
+                <button class="admin-icon-btn danger" onclick="disconnect()"><i class="fas fa-sign-out-alt"></i> Disconnect</button>
+                <span id="repo-label" style="color:var(--text-muted); font-size:0.85rem; margin-left:auto;"></span>
+            </div>
+
+            <div class="admin-section-heading">
+                <i class="fas fa-bullhorn"></i> Announcements
+                <span class="admin-count-pill" id="announcements-count">0</span>
+            </div>
+            <p class="admin-hint" style="margin-top:-8px; margin-bottom:16px;">
+                Shown as a looping banner before "Master Overview" on the site. Each one has a picture, a clickable title, and a link. Use the arrows to reorder — they play in this order.
+            </p>
+            <div id="announcements-list"></div>
+
+            <div class="admin-section-heading">
+                <i class="fas fa-graduation-cap"></i> Promotions
+                <span class="admin-count-pill" id="promotions-count">0</span>
+            </div>
+            <div id="promotions-list"></div>
+
+            <div class="log-panel" id="log-panel"></div>
+        </div>
+    </div>
+
+    <!-- Sticky save bar -->
+    <div class="save-bar" id="save-bar" style="display:none;">
+        <span id="save-status">All changes saved</span>
+        <button id="save-btn" onclick="saveConfig('Update promotion details via admin panel')" disabled>
+            <i class="fas fa-save"></i> Save All Changes
+        </button>
+    </div>
+
+<script>
+    // ============================================================
+    //  GitHub connection state
+    // ============================================================
+    let GH = { owner: '', repo: '', branch: 'main', token: '' };
+    let configSha = null;
+    let config = {};
+    let repoFiles = [];
+    let isDirty = false;
+
+    function ghHeaders(extra) {
+        return Object.assign({
+            'Authorization': 'token ' + GH.token,
+            'Accept': 'application/vnd.github+json'
+        }, extra || {});
+    }
+
+    async function ghGetFile(path) {
+        const url = 'https://api.github.com/repos/' + GH.owner + '/' + GH.repo + '/contents/' + encodeURIComponent(path) + '?ref=' + encodeURIComponent(GH.branch);
+        const res = await fetch(url, { headers: ghHeaders() });
+        if (res.status === 404) return null;
+        if (!res.ok) throw new Error('GitHub GET ' + path + ' failed (' + res.status + ')');
+        return res.json();
+    }
+
+    async function ghListRoot() {
+        const url = 'https://api.github.com/repos/' + GH.owner + '/' + GH.repo + '/contents/?ref=' + encodeURIComponent(GH.branch);
+        const res = await fetch(url, { headers: ghHeaders() });
+        if (!res.ok) throw new Error('GitHub directory listing failed (' + res.status + ')');
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+    }
+
+    async function ghPutFile(path, base64Content, message, sha) {
+        const url = 'https://api.github.com/repos/' + GH.owner + '/' + GH.repo + '/contents/' + encodeURIComponent(path);
+        const body = { message: message, content: base64Content, branch: GH.branch };
+        if (sha) body.sha = sha;
+        const res = await fetch(url, { method: 'PUT', headers: ghHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+        if (!res.ok) {
+            const t = await res.text();
+            throw new Error('GitHub PUT ' + path + ' failed (' + res.status + '): ' + t);
+        }
+        return res.json();
+    }
+
+    async function ghDeleteFile(path, message, sha) {
+        const url = 'https://api.github.com/repos/' + GH.owner + '/' + GH.repo + '/contents/' + encodeURIComponent(path);
+        const res = await fetch(url, { method: 'DELETE', headers: ghHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify({ message: message, sha: sha, branch: GH.branch }) });
+        if (!res.ok) {
+            const t = await res.text();
+            throw new Error('GitHub DELETE ' + path + ' failed (' + res.status + '): ' + t);
+        }
+        return res.json();
+    }
+
+    async function uploadFileSmart(path, file, message) {
+        const existing = await ghGetFile(path).catch(() => null);
+        const base64 = await fileToBase64(file);
+        await ghPutFile(path, base64, message, existing ? existing.sha : undefined);
+    }
+
+    async function deleteFileSmart(path, message) {
+        const existing = await ghGetFile(path);
+        if (!existing) { log('File not found on GitHub: ' + path, 'warn'); return; }
+        await ghDeleteFile(path, message, existing.sha);
+    }
+
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result.split(',')[1]);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function decodeBase64Text(b64) {
+        return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
+    }
+
+    function encodeBase64Text(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function rawUrl(path) {
+        return 'https://raw.githubusercontent.com/' + GH.owner + '/' + GH.repo + '/' + GH.branch + '/' + path + '?t=' + Date.now();
+    }
+
+    function pdfExists(number) {
+        return repoFiles.some(f => f.name === 'promo' + number + '.pdf');
+    }
+
+    function ordinal(n) {
+        const s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+
+    // ============================================================
+    //  Connect / disconnect
+    // ============================================================
+    async function connect() {
+        GH.owner = document.getElementById('gh-owner').value.trim();
+        GH.repo = document.getElementById('gh-repo').value.trim();
+        GH.branch = document.getElementById('gh-branch').value.trim() || 'main';
+        GH.token = document.getElementById('gh-token').value.trim();
+
+        if (!GH.owner || !GH.repo || !GH.token) {
+            log('Please fill in the owner, repository, and token fields.', 'error');
+            return;
+        }
+
+        try {
+            log('Connecting to GitHub…', 'info');
+            const cfgFile = await ghGetFile('site-config.json');
+            if (cfgFile) {
+                configSha = cfgFile.sha;
+                config = normalizeConfig(JSON.parse(decodeBase64Text(cfgFile.content)));
+            } else {
+                configSha = null;
+                config = { promotions: {}, announcements: [] };
+                log('No site-config.json found yet — it will be created on your first save.', 'warn');
+            }
+            repoFiles = await ghListRoot();
+
+            sessionStorage.setItem('gh_token', GH.token);
+            localStorage.setItem('gh_owner', GH.owner);
+            localStorage.setItem('gh_repo', GH.repo);
+            localStorage.setItem('gh_branch', GH.branch);
+
+            document.getElementById('connect-panel').style.display = 'none';
+            document.getElementById('admin-app').style.display = 'block';
+            document.getElementById('save-bar').style.display = 'flex';
+            document.getElementById('repo-label').textContent = GH.owner + '/' + GH.repo + ' @ ' + GH.branch;
+
+            renderAll();
+            log('Connected. Loaded ' + Object.keys(config.promotions).length + ' promotion(s) and ' + config.announcements.length + ' announcement(s).', 'success');
+        } catch (err) {
+            log('Connection failed: ' + err.message, 'error');
+        }
+    }
+
+    // Accepts either the new { promotions, announcements } shape or an older flat shape
+    // (promoKey -> promoData at the top level) and returns the new shape either way.
+    function normalizeConfig(raw) {
+        if (raw && raw.promotions) {
+            return { promotions: raw.promotions || {}, announcements: raw.announcements || [] };
+        }
+        // Old flat schema fallback: treat every top-level key as a promotion
+        return { promotions: raw || {}, announcements: [] };
+    }
+
+    function disconnect() {
+        sessionStorage.removeItem('gh_token');
+        GH.token = '';
+        document.getElementById('admin-app').style.display = 'none';
+        document.getElementById('save-bar').style.display = 'none';
+        document.getElementById('connect-panel').style.display = 'block';
+        document.getElementById('gh-token').value = '';
+    }
+
+    async function refreshAll() {
+        try {
+            log('Refreshing from GitHub…', 'info');
+            const cfgFile = await ghGetFile('site-config.json');
+            if (cfgFile) {
+                configSha = cfgFile.sha;
+                config = normalizeConfig(JSON.parse(decodeBase64Text(cfgFile.content)));
+            }
+            repoFiles = await ghListRoot();
+            isDirty = false;
+            updateSaveBarState();
+            renderAll();
+            log('Refreshed.', 'success');
+        } catch (err) {
+            log('Refresh failed: ' + err.message, 'error');
+        }
+    }
+
+    // ============================================================
+    //  Save config.json (text fields + toggles)
+    // ============================================================
+    async function saveConfig(message) {
+        try {
+            const content = encodeBase64Text(JSON.stringify(config, null, 4));
+            const result = await ghPutFile('site-config.json', content, message || 'Update site configuration via admin panel', configSha);
+            configSha = result.content.sha;
+            isDirty = false;
+            updateSaveBarState();
+            log('Saved: ' + message, 'success');
+        } catch (err) {
+            log('Save failed: ' + err.message, 'error');
+        }
+    }
+
+    function markDirty() {
+        isDirty = true;
+        updateSaveBarState();
+    }
+
+    function updateSaveBarState() {
+        const bar = document.getElementById('save-bar');
+        const btn = document.getElementById('save-btn');
+        bar.classList.toggle('dirty', isDirty);
+        btn.disabled = !isDirty;
+        document.getElementById('save-status').textContent = isDirty ? 'You have unsaved changes' : 'All changes saved';
+    }
+
+    function updateField(key, field, value) {
+        config.promotions[key][field] = value;
+        markDirty();
+    }
+
+    // ============================================================
+    //  Promotions: add / delete
+    // ============================================================
+    function addPromotion() {
+        const numbers = Object.values(config.promotions).map(c => c.number || 0);
+        const nextNumber = numbers.length ? Math.max(...numbers) + 1 : 1;
+        const key = 'promo' + nextNumber;
+        config.promotions[key] = {
+            number: nextNumber,
+            labelEn: ordinal(nextNumber) + ' Class',
+            labelFr: nextNumber + 'ème Promotion',
+            years: '',
+            pdfEnabled: false,
+            images: []
+        };
+        markDirty();
+        renderAll();
+        log('Added ' + key + '. Fill in the details, then click "Save All Changes".', 'info');
+    }
+
+    async function deletePromotion(key) {
+        const cfg = config.promotions[key];
+        if (!confirm('Remove ' + (cfg.labelEn || key) + ' from the site? Its photo and PDF files stay in the repository unless you delete them individually first.')) return;
+        delete config.promotions[key];
+        await saveConfig('Remove promotion ' + key + ' via admin panel');
+        renderAll();
+    }
+
+    // ============================================================
+    //  Photos
+    // ============================================================
+    async function addPhotos(key, fileList) {
+        const cfg = config.promotions[key];
+        let nextIndex = 1;
+        if (cfg.images.length) {
+            const nums = cfg.images.map(name => {
+                const m = name.match(/-pic-(\d+)\.jpg$/i);
+                return m ? parseInt(m[1], 10) : 0;
+            });
+            nextIndex = Math.max.apply(null, nums) + 1;
+        }
+        for (const file of fileList) {
+            const filename = 'promo-' + cfg.number + '-pic-' + nextIndex + '.jpg';
+            log('Uploading ' + filename + '…', 'info');
+            try {
+                await uploadFileSmart(filename, file, 'Add photo ' + filename + ' via admin panel');
+                cfg.images.push(filename);
+                nextIndex++;
+                log('Uploaded ' + filename, 'success');
+            } catch (err) {
+                log('Failed to upload ' + filename + ': ' + err.message, 'error');
+            }
+        }
+        await saveConfig('Update photo list for ' + key);
+        renderAll();
+    }
+
+    async function deletePhoto(key, filename) {
+        if (!confirm('Delete ' + filename + '? This cannot be undone.')) return;
+        try {
+            await deleteFileSmart(filename, 'Delete photo ' + filename + ' via admin panel');
+            config.promotions[key].images = config.promotions[key].images.filter(n => n !== filename);
+            await saveConfig('Update photo list for ' + key);
+            renderAll();
+            log('Deleted ' + filename, 'success');
+        } catch (err) {
+            log('Failed to delete ' + filename + ': ' + err.message, 'error');
+        }
+    }
+
+    // ============================================================
+    //  PDF
+    // ============================================================
+    async function uploadPdf(key, file) {
+        const cfg = config.promotions[key];
+        const filename = 'promo' + cfg.number + '.pdf';
+        try {
+            log('Uploading ' + filename + '…', 'info');
+            await uploadFileSmart(filename, file, 'Upload/replace ' + filename + ' via admin panel');
+            log('Uploaded ' + filename, 'success');
+            repoFiles = await ghListRoot();
+            renderAll();
+        } catch (err) {
+            log('Failed to upload ' + filename + ': ' + err.message, 'error');
+        }
+    }
+
+    async function deletePdf(key) {
+        const cfg = config.promotions[key];
+        const filename = 'promo' + cfg.number + '.pdf';
+        if (!confirm('Delete ' + filename + '? This cannot be undone.')) return;
+        try {
+            await deleteFileSmart(filename, 'Delete ' + filename + ' via admin panel');
+            log('Deleted ' + filename, 'success');
+            repoFiles = await ghListRoot();
+            renderAll();
+        } catch (err) {
+            log('Failed to delete ' + filename + ': ' + err.message, 'error');
+        }
+    }
+
+    // ============================================================
+    //  Announcements: add / delete / reorder / edit / image upload
+    // ============================================================
+    function addAnnouncement() {
+        config.announcements.push({
+            image: '',
+            titleEn: '',
+            titleFr: '',
+            link: ''
+        });
+        markDirty();
+        renderAll();
+        log('Added a new announcement. Upload a picture and fill in its title/link, then click "Save All Changes".', 'info');
+    }
+
+    async function deleteAnnouncement(index) {
+        const a = config.announcements[index];
+        if (!confirm('Remove this announcement from the site?')) return;
+        const oldImage = a.image;
+        config.announcements.splice(index, 1);
+        await saveConfig('Remove announcement via admin panel');
+        renderAll();
+        // Note: we leave the image file in the repo in case it's reused elsewhere;
+        // delete it manually from GitHub if you're sure it's no longer needed.
+        if (oldImage) log('Removed the announcement. Its image file (' + oldImage + ') was left in the repo.', 'info');
+    }
+
+    function moveAnnouncement(index, direction) {
+        const newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= config.announcements.length) return;
+        const arr = config.announcements;
+        [arr[index], arr[newIndex]] = [arr[newIndex], arr[index]];
+        markDirty();
+        renderAll();
+    }
+
+    function updateAnnouncementField(index, field, value) {
+        config.announcements[index][field] = value;
+        markDirty();
+    }
+
+    async function uploadAnnouncementImage(index, file) {
+        // Find the next free announcement-N.jpg name across the whole repo, not just this entry,
+        // so re-uploading doesn't collide with another announcement's picture.
+        const usedNumbers = repoFiles
+            .map(f => { const m = f.name.match(/^announcement-(\d+)\.jpg$/i); return m ? parseInt(m[1], 10) : 0; })
+            .filter(n => n > 0);
+        const existingName = config.announcements[index].image;
+        let filename = existingName && /^announcement-\d+\.jpg$/i.test(existingName)
+            ? existingName
+            : 'announcement-' + (usedNumbers.length ? Math.max.apply(null, usedNumbers) + 1 : 1) + '.jpg';
+
+        try {
+            log('Uploading ' + filename + '…', 'info');
+            await uploadFileSmart(filename, file, 'Upload announcement image ' + filename + ' via admin panel');
+            config.announcements[index].image = filename;
+            await saveConfig('Update announcement image');
+            repoFiles = await ghListRoot();
+            renderAll();
+            log('Uploaded ' + filename, 'success');
+        } catch (err) {
+            log('Failed to upload ' + filename + ': ' + err.message, 'error');
+        }
+    }
+
+    // ============================================================
+    //  Rendering
+    // ============================================================
+    function renderAll() {
+        renderAnnouncements();
+        renderPromotions();
+    }
+
+    function renderAnnouncements() {
+        const container = document.getElementById('announcements-list');
+        document.getElementById('announcements-count').textContent = config.announcements.length;
+        container.innerHTML = '';
+
+        if (config.announcements.length === 0) {
+            container.innerHTML = '<div class="admin-card"><p>No announcements yet. Click "Add Announcement" to create one.</p></div>';
+            return;
+        }
+
+        config.announcements.forEach((a, index) => {
+            const card = document.createElement('div');
+            card.className = 'admin-card';
+            const imgSrc = a.image ? rawUrl(a.image) : '';
+            card.innerHTML =
+                '<div class="announcement-card-layout">' +
+                    '<div class="admin-order-btns">' +
+                        '<button ' + (index === 0 ? 'disabled' : '') + ' onclick="moveAnnouncement(' + index + ', -1)" title="Move up"><i class="fas fa-chevron-up"></i></button>' +
+                        '<button ' + (index === config.announcements.length - 1 ? 'disabled' : '') + ' onclick="moveAnnouncement(' + index + ', 1)" title="Move down"><i class="fas fa-chevron-down"></i></button>' +
+                    '</div>' +
+                    '<div class="announcement-card-body">' +
+                        '<div class="admin-card-header">' +
+                            '<h3>Announcement #' + (index + 1) + '</h3>' +
+                            '<button class="admin-icon-btn danger" onclick="deleteAnnouncement(' + index + ')"><i class="fas fa-trash"></i> Remove</button>' +
+                        '</div>' +
+                        (imgSrc ? '<img class="announcement-admin-thumb" src="' + imgSrc + '" alt="">' : '') +
+                        '<label class="upload-btn" style="margin-bottom:16px;"><i class="fas fa-upload"></i> ' + (imgSrc ? 'Replace Picture' : 'Upload Picture') +
+                            '<input type="file" accept="image/*" style="display:none" onchange="if(this.files[0]) uploadAnnouncementImage(' + index + ', this.files[0])"></label>' +
+                        '<div class="admin-field-row"><label>Title (English)</label>' +
+                            '<input type="text" value="' + escapeHtml(a.titleEn) + '" oninput="updateAnnouncementField(' + index + ',\'titleEn\', this.value)"></div>' +
+                        '<div class="admin-field-row"><label>Title (Français)</label>' +
+                            '<input type="text" value="' + escapeHtml(a.titleFr) + '" oninput="updateAnnouncementField(' + index + ',\'titleFr\', this.value)"></div>' +
+                        '<div class="admin-field-row"><label>Link (opens when the title is clicked)</label>' +
+                            '<input type="text" value="' + escapeHtml(a.link) + '" placeholder="https://…" oninput="updateAnnouncementField(' + index + ',\'link\', this.value)"></div>' +
+                    '</div>' +
+                '</div>';
+            container.appendChild(card);
+        });
+    }
+
+    function renderPromotions() {
+        const container = document.getElementById('promotions-list');
+        document.getElementById('promotions-count').textContent = Object.keys(config.promotions).length;
+        container.innerHTML = '';
+        const sortedKeys = Object.keys(config.promotions).sort((a, b) => config.promotions[a].number - config.promotions[b].number);
+
+        if (sortedKeys.length === 0) {
+            container.innerHTML = '<div class="admin-card"><p>No promotions yet. Click "Add New Promotion" to create one.</p></div>';
+            return;
+        }
+
+        sortedKeys.forEach(key => {
+            const cfg = config.promotions[key];
+            const hasPdf = pdfExists(cfg.number);
+            const card = document.createElement('div');
+            card.className = 'admin-card';
+            card.innerHTML =
+                '<div class="admin-card-header">' +
+                    '<h3>Promotion #' + cfg.number + ' <span class="admin-key">(' + key + ')</span></h3>' +
+                    '<button class="admin-icon-btn danger" onclick="deletePromotion(\'' + key + '\')"><i class="fas fa-trash"></i> Remove</button>' +
+                '</div>' +
+
+                '<div class="admin-field-row"><label>Label (English)</label>' +
+                    '<input type="text" value="' + escapeHtml(cfg.labelEn) + '" oninput="updateField(\'' + key + '\',\'labelEn\', this.value)"></div>' +
+                '<div class="admin-field-row"><label>Label (Français)</label>' +
+                    '<input type="text" value="' + escapeHtml(cfg.labelFr) + '" oninput="updateField(\'' + key + '\',\'labelFr\', this.value)"></div>' +
+                '<div class="admin-field-row"><label>Years</label>' +
+                    '<input type="text" value="' + escapeHtml(cfg.years) + '" placeholder="e.g. 2023 - 2025" oninput="updateField(\'' + key + '\',\'years\', this.value)"></div>' +
+
+                '<div class="admin-toggle-row">' +
+                    '<label class="switch"><input type="checkbox" ' + (cfg.pdfEnabled ? 'checked' : '') + ' ' + (hasPdf ? '' : 'disabled') +
+                        ' onchange="updateField(\'' + key + '\',\'pdfEnabled\', this.checked)"><span class="slider"></span></label>' +
+                    '<span>Show the PDF document on the site ' + (hasPdf ? '' : '<em>(upload a PDF below first)</em>') + '</span>' +
+                '</div>' +
+
+                '<div class="admin-section">' +
+                    '<div class="admin-section-title"><i class="fas fa-file-pdf"></i> PDF document' +
+                        '<span class="status-pill ' + (hasPdf ? 'status-on' : 'status-off') + '">' + (hasPdf ? 'Uploaded' : 'Missing') + '</span>' +
+                    '</div>' +
+                    '<div class="admin-pdf-row">' +
+                        '<label class="upload-btn"><i class="fas fa-upload"></i> ' + (hasPdf ? 'Replace PDF' : 'Upload PDF') +
+                            '<input type="file" accept="application/pdf" style="display:none" onchange="if(this.files[0]) uploadPdf(\'' + key + '\', this.files[0])"></label>' +
+                        (hasPdf ? '<button class="admin-icon-btn danger" onclick="deletePdf(\'' + key + '\')"><i class="fas fa-trash"></i> Delete PDF</button>' : '') +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="admin-section">' +
+                    '<div class="admin-section-title"><i class="fas fa-images"></i> Photos (' + cfg.images.length + ')</div>' +
+                    '<div class="admin-thumb-grid">' +
+                        cfg.images.map(name =>
+                            '<div class="admin-thumb"><img src="' + rawUrl(name) + '" alt="' + escapeHtml(name) + '">' +
+                                '<button class="admin-thumb-delete" onclick="deletePhoto(\'' + key + '\',\'' + name + '\')" title="Delete"><i class="fas fa-times"></i></button>' +
+                            '</div>'
+                        ).join('') +
+                        '<label class="admin-thumb admin-thumb-add" title="Add photos">' +
+                            '<i class="fas fa-plus"></i>' +
+                            '<input type="file" accept="image/*" multiple style="display:none" onchange="if(this.files.length) addPhotos(\'' + key + '\', Array.from(this.files))">' +
+                        '</label>' +
+                    '</div>' +
+                    '<p class="admin-hint">Uploaded photos are saved as <code>promo-' + cfg.number + '-pic-N.jpg</code>, matching the site\'s naming convention.</p>' +
+                '</div>';
+            container.appendChild(card);
+        });
+    }
+
+    // ============================================================
+    //  Log panel
+    // ============================================================
+    function log(msg, level) {
+        const panel = document.getElementById('log-panel');
+        const line = document.createElement('div');
+        line.className = 'log-line log-' + (level || 'info');
+        const time = new Date().toLocaleTimeString();
+        line.textContent = '[' + time + '] ' + msg;
+        panel.prepend(line);
+    }
+
+    // ============================================================
+    //  Init: prefill remembered connection details
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        const owner = localStorage.getItem('gh_owner');
+        const repo = localStorage.getItem('gh_repo');
+        const branch = localStorage.getItem('gh_branch');
+        const token = sessionStorage.getItem('gh_token');
+        if (owner) document.getElementById('gh-owner').value = owner;
+        if (repo) document.getElementById('gh-repo').value = repo;
+        if (branch) document.getElementById('gh-branch').value = branch;
+        if (token) {
+            document.getElementById('gh-token').value = token;
+            connect();
+        }
+    });
+
+    // --- Dark Mode (shared with main site) ---
+    const themeBtn = document.getElementById('theme-btn');
+    const themeText = document.getElementById('theme-text');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') enableDarkMode();
+
+    function toggleTheme() {
+        body.classList.contains('dark-mode') ? disableDarkMode() : enableDarkMode();
+    }
+    function enableDarkMode() {
+        body.classList.add('dark-mode');
+        themeText.textContent = 'Light';
+        themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    }
+    function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        themeText.textContent = 'Dark';
+        themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
+</script>
+
+</body>
+</html>

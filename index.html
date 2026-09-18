@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master of Health Sciences and BioTechnologies</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Master SSB" class="nav-logo">
+            <span>Master SSB</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#announcements"><span class="lang-en">Announcements</span><span class="lang-fr" style="display:none;">Annonces</span></a></li>
+            <li><a href="#about"><span class="lang-en">About</span><span class="lang-fr" style="display:none;">À propos</span></a></li>
+            <li><a href="#programme"><span class="lang-en">Program</span><span class="lang-fr" style="display:none;">Programme</span></a></li>
+            <li><a href="#documents"><span class="lang-en">Documents</span><span class="lang-fr" style="display:none;">Documents</span></a></li>
+            <li><a href="#gallery"><span class="lang-en">Gallery</span><span class="lang-fr" style="display:none;">Promotions</span></a></li>
+            <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-fr" style="display:none;">Contact</span></a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <button onclick="toggleTheme()" class="lang-btn" id="theme-btn">
+                <span id="theme-text">Dark</span> <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+            
+            <button onclick="toggleLanguage()" class="lang-btn">
+                <span id="lang-text">FR</span> <i class="fas fa-globe"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="lang-en">Master of Health Sciences and BioTechnologies</h1>
+            <h1 class="lang-fr" style="display:none;">Master Sciences de la Santé et BioTechnologies</h1>
+
+            <h2 class="lang-en">Pathway: Metabolic, Inflammatory and Infectious Pathologies</h2>
+            <h2 class="lang-fr" style="display:none;">Parcours : Pathologies Métaboliques, Inflammatoires et Infectieuses</h2>
+
+            <p class="lang-en">An excellence partnership between Hassan II University of Casablanca and Toulouse III Paul Sabatier University.</p>
+            <p class="lang-fr" style="display:none;">Un partenariat d'excellence entre l'Université Hassan II de Casablanca et l'Université Toulouse III Paul Sabatier.</p>
+
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">
+                    <span class="lang-en">Contact Us</span>
+                    <span class="lang-fr" style="display:none;">Contacter Nous</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="announcements" class="container" style="display:none;">
+        <h2 class="section-title">
+            <span class="lang-en">Announcements</span>
+            <span class="lang-fr" style="display:none;">Annonces</span>
+        </h2>
+        <div class="announcement-carousel" id="announcement-carousel">
+            <div class="announcement-slide">
+                <img id="announcement-img" src="" alt="" class="announcement-img">
+                <div class="announcement-caption">
+                    <a id="announcement-title-link" href="#" target="_blank" rel="noopener" class="announcement-title-link">
+                        <span id="announcement-title-en" class="lang-en"></span>
+                        <span id="announcement-title-fr" class="lang-fr" style="display:none;"></span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+                <button class="announcement-nav prev" onclick="changeAnnouncement(-1, true)" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="announcement-nav next" onclick="changeAnnouncement(1, true)" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="announcement-dots" id="announcement-dots"></div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">
+            <span class="lang-en">Master Overview</span>
+            <span class="lang-fr" style="display:none;">Présentation du Master</span>
+        </h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="lang-en">The Master <strong>Health Sciences and BioTechnologies</strong> is part of the L.M.D. cycle of Hassan II University of Casablanca (Morocco) in partnership with the University of Toulouse III (France).</p>
+                <p class="lang-fr" style="display:none;">Le Master <strong>Sciences de la Santé et BioTechnologies</strong> est une composante du cycle L.M.D. de l'Université Hassan II de Casablanca (Maroc) en partenariat avec l'Université de Toulouse III (France).</p>
+                
+                <p class="lang-en"><strong>Objectives:</strong> The general objective of this master's degree is to train young graduates capable of meeting current needs in innovative research and advanced biotechnologies.</p>
+                <p class="lang-fr" style="display:none;"><strong>Objectifs :</strong> Ce master a pour objectif général de former des jeunes diplômés capables de répondre aux besoins actuels en recherche innovante et en biotechnologies avancées.</p>
+                
+                <ul class="highlights">
+                    <li><i class="fas fa-globe"></i> 
+                        <span class="lang-en">Teachers from Morocco, France, Germany, Canada, USA.</span>
+                        <span class="lang-fr" style="display:none;">Enseignants du Maroc, France, Allemagne, Canada, USA.</span>
+                    </li>
+                    <li><i class="fas fa-plane"></i> 
+                        <span class="lang-en">Erasmus mobility for M2 internships in Toulouse.</span>
+                        <span class="lang-fr" style="display:none;">Mobilité Erasmus pour les stages de M2 à Toulouse.</span>
+                    </li>
+                    <li><i class="fas fa-microscope"></i> 
+                        <span class="lang-en">Access to doctoral schools and engineering market.</span>
+                        <span class="lang-fr" style="display:none;">Accès aux écoles doctorales et marché de l'ingénierie.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="about-coords">
+                <h3>
+                    <span class="lang-en">Coordination</span>
+                    <span class="lang-fr" style="display:none;">Coordination</span>
+                </h3>
+                <div class="coord-card">
+                    <img src="prof1.png" alt="Pr. AKARID Khadija" class="prof-img">
+                    <h4>Pr. AKARID Khadija</h4>
+                    <p>FSAC, UH2C (Morocco)</p>
+                </div>
+                <div class="coord-card">
+                    <img src="prof2.png" alt="Dr. KARIM Zoubida" class="prof-img">
+                    <h4>Dr. KARIM Zoubida</h4>
+                    <p>INSERM - CNRS, Toulouse III (France)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programme" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-en">Pedagogical Program</span>
+                <span class="lang-fr" style="display:none;">Programme Pédagogique</span>
+            </h2>
+            <div class="program-grid">
+                <div class="semester-card">
+                    <h3>
+                        <span class="lang-en">Semester 1</span>
+                        <span class="lang-fr" style="display:none;">Semestre 1</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="lang-en">M1 : Structural and functional cell biology</span>
+                            <span class="lang-fr" style="display:none;">M1 : Biologie structurale et fonctionnelle de la cellule</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M2 : Molecular and structural microbiology</span>
+                            <span class="lang-fr" style="display:none;">M2 : Microbiologie moléculaire et structurale</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M3 : Functioning of the immune system</span>
+                            <span class="lang-fr" style="display:none;">M3 : Fonctionnement du système immunitaire</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M4 : Physiology and pathophysiology of major functions</span>
+                            <span class="lang-fr" style="display:none;">M4 : Physiologie physiopathologies des grandes fonctions</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M5 : Scientific research methodologies</span>
+                            <span class="lang-fr" style="display:none;">M5 : Méthodologies de recherche scientifique</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M6 : Scientific English</span>
+                            <span class="lang-fr" style="display:none;">M6 : Anglais Scientifique</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M7 : Artificial Intelligence and Innovation</span>
+                            <span class="lang-fr" style="display:none;">M7 : Intelligence Artificielle et Innovation</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="semester-card">
+                    <h3>
+                        <span class="lang-en">Semester 2</span>
+                        <span class="lang-fr" style="display:none;">Semestre 2</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="lang-en">M8 : Pharmacotherapy, innovative therapies and Entrepreneurship</span>
+                            <span class="lang-fr" style="display:none;">M8 : Pharmacothérapie, thérapies innovantes et Entrepreunariat</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M9 : Bioinformatics, AI and Biostatistics</span>
+                            <span class="lang-fr" style="display:none;">M9 : Bio-informatique, IA et Biostatistique</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M10 : Human, molecular genetics and epigenetics</span>
+                            <span class="lang-fr" style="display:none;">M10 : Génétique humaine, moléculaire et épigénétique</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M11 : Genomics, Transcriptomics and Proteomics</span>
+                            <span class="lang-fr" style="display:none;">M11 : Génomique, Transcriptomique et Protéomique</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M12 : Human and animal Biosafety/Bioethics</span>
+                            <span class="lang-fr" style="display:none;">M12 : Biosécurité/Bioéthique humaine et animale</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M13 : Entrepreneurial culture and Communication techniques</span>
+                            <span class="lang-fr" style="display:none;">M13 : Culture entrepreneuriale et Techniques de communication</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M14 : Scientific Research Methodology</span>
+                            <span class="lang-fr" style="display:none;">M14 : Méthodologie de Recherche Scientifique</span>
+                        </li>
+                    </ul>
+                </div>
+                 <div class="semester-card">
+                    <h3>
+                        <span class="lang-en">Semester 3</span>
+                        <span class="lang-fr" style="display:none;">Semestre 3</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="lang-en">M15 : Anti-infectious immunity</span>
+                            <span class="lang-fr" style="display:none;">M15 : Immunité anti-infectieuse</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M16 : Immunogenetics/immunopathologies</span>
+                            <span class="lang-fr" style="display:none;">M16 : Immunogénétique/immunopathologies</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M17 : Vaccine Biotechnology and Vaccine Therapy</span>
+                            <span class="lang-fr" style="display:none;">M17 : Biotechnologie vaccinale et vaccinothérapie</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M18 : Iron metabolism: Genetic and inflammatory pathologies</span>
+                            <span class="lang-fr" style="display:none;">M18 : Métabolisme du fer : Pathologies génétiques et inflammatoires</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M19 : Energy metabolism and Metabolome</span>
+                            <span class="lang-fr" style="display:none;">M19 : Métabolisme énergétique et Métabolome</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M20 : Molecular basis of hereditary metabolic diseases and therapeutic approaches</span>
+                            <span class="lang-fr" style="display:none;">M20 : Bases moléculaires des maladies héréditaires du métabolisme et approches thérapeutiques</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">M21 : Advanced Iron Metabolism and Cellular Regulation</span>
+                            <span class="lang-fr" style="display:none;">M21 : Métabolisme avancé du fer et régulation cellulaire</span>
+                        </li>
+                    </ul>
+                </div>
+                 <div class="semester-card">
+                    <h3>
+                        <span class="lang-en">Semester 4</span>
+                        <span class="lang-fr" style="display:none;">Semestre 4</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="lang-en"><strong>Research Internship (6 months)</strong></span>
+                            <span class="lang-fr" style="display:none;"><strong>Stage de recherche (6 mois)</strong></span>
+                        </li>
+                        <li>
+                            <span class="lang-en">Employment skills</span>
+                            <span class="lang-fr" style="display:none;">Employment skills</span>
+                        </li>
+                        <li>
+                            <span class="lang-en">International mobility possible</span>
+                            <span class="lang-fr" style="display:none;">Mobilité internationale possible</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documents" class="container">
+        <h2 class="section-title">
+            <span class="lang-en">Class Documents</span>
+            <span class="lang-fr" style="display:none;">Documents des Promotions</span>
+        </h2>
+        <p style="text-align:center; margin-bottom: 30px;">
+            <span class="lang-en">Consult lists and documents related to current classes directly in your browser.</span>
+            <span class="lang-fr" style="display:none;">Consultez les listes et documents relatifs aux promotions en cours directement dans votre navigateur.</span>
+        </p>
+        
+        <div class="pdf-container" id="pdf-container">
+            <!-- Populated dynamically from site-config.json — see loadSiteConfig() below -->
+        </div>
+    </section>
+
+    <section id="gallery" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-en">Our Classes</span>
+                <span class="lang-fr" style="display:none;">Nos Promotions</span>
+            </h2>
+            <div class="gallery-grid" id="gallery-grid" style="justify-content: center;">
+                <!-- Populated dynamically from site-config.json — see loadSiteConfig() below -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY LIGHTBOX WINDOW -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-window">
+            <div class="lightbox-header">
+                <h3 id="lightbox-title">Gallery</h3>
+                <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+            </div>
+            <div class="lightbox-body">
+                <button class="lightbox-nav prev" onclick="changeSlide(-1, true)" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <img id="lightbox-img" src="" alt="Gallery photo">
+                <button class="lightbox-nav next" onclick="changeSlide(1, true)" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+            <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN PDF VIEWER WINDOW -->
+    <div class="lightbox-overlay" id="pdf-lightbox">
+        <div class="lightbox-window pdf-lightbox-window">
+            <div class="lightbox-header">
+                <h3>
+                    <span class="lang-en" id="pdf-modal-title-en">Document</span>
+                    <span class="lang-fr" id="pdf-modal-title-fr" style="display:none;">Document</span>
+                </h3>
+                <div class="pdf-modal-actions">
+                    <a id="pdf-modal-download" href="#" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span class="lang-en">Download</span>
+                        <span class="lang-fr" style="display:none;">Télécharger</span>
+                    </a>
+                    <button class="lightbox-close" onclick="closePdfViewer()" aria-label="Close">&times;</button>
+                </div>
+            </div>
+            <iframe id="pdf-modal-iframe" src="" class="pdf-modal-iframe" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <section id="contact" class="footer-section">
+        <div class="container">
+            <h2 class="section-title text-white">
+                <span class="lang-en">Stay Connected</span>
+                <span class="lang-fr" style="display:none;">Restez Connectés</span>
+            </h2>
+            <p class="text-white">
+                <span class="lang-en">For more information, contact us or follow our social networks.</span>
+                <span class="lang-fr" style="display:none;">Pour plus d'informations, contactez-nous ou suivez nos réseaux.</span>
+            </p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/master-sciences-de-la-sant%C3%A9-et-biotechnologies-fsac/" target="_blank" class="social-btn linkedin">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                
+                <a href="https://www.instagram.com/master_ssb_fsac/" target="_blank" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                
+                <a href="https://discord.gg/KPh8cdHZYS" target="_blank" class="social-btn discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+
+                <a href="mailto:masterinternational405@gmail.com" class="social-btn email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                
+                <a href="https://fsac.univh2c.ma/front/index.html" target="_blank" class="social-btn">
+                    <i class="fas fa-graduation-cap"></i> FSAC
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Master Sciences de la Santé et BioTechnologies. FSAC - UH2C.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- Language Toggle Script ---
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            
+            const frElements = document.querySelectorAll('.lang-fr');
+            const enElements = document.querySelectorAll('.lang-en');
+            const btnText = document.getElementById('lang-text');
+
+            if (currentLang === 'fr') {
+                frElements.forEach(el => el.style.display = '');
+                enElements.forEach(el => el.style.display = 'none');
+                btnText.textContent = 'EN'; 
+            } else {
+                enElements.forEach(el => el.style.display = '');
+                frElements.forEach(el => el.style.display = 'none');
+                btnText.textContent = 'FR'; 
+            }
+
+            // Keep the gallery window title in sync if it's open
+            if (currentGallery) {
+                document.getElementById('lightbox-title').textContent = currentGallery.title[currentLang];
+            }
+        }
+
+        // --- Gallery Lightbox "Window" Script ---
+        // All photos follow the naming pattern: promo-<promotion>-pic-<number>.jpg
+        // Everything below (labels, years, photo list, whether the PDF is shown, and the
+        // announcements banner) is controlled from admin.html and lives in site-config.json —
+        // this file just renders that config.
+        let siteConfig = { promotions: {}, announcements: [] };
+        let promoConfig = {};
+        let galleryData = {};
+
+        const DEFAULT_SITE_CONFIG = {
+            promotions: {
+                promo1: { number: 1, labelEn: '1st Class', labelFr: '1ère Promotion', years: '2023 - 2025', pdfEnabled: true, images: ['promo-1-pic-1.jpg'] },
+                promo2: { number: 2, labelEn: '2nd Class', labelFr: '2ème Promotion', years: '2024 - 2026', pdfEnabled: true, images: ['promo-2-pic-1.jpg'] },
+                promo3: { number: 3, labelEn: '3rd Class', labelFr: '3ème Promotion', years: '2025 - 2027', pdfEnabled: true, images: ['promo-3-pic-1.jpg'] }
+            },
+            announcements: []
+        };
+
+        async function loadSiteConfig() {
+            try {
+                const res = await fetch('site-config.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('site-config.json not found');
+                siteConfig = await res.json();
+            } catch (err) {
+                console.error('Could not load site-config.json, falling back to defaults.', err);
+                siteConfig = DEFAULT_SITE_CONFIG;
+            }
+            promoConfig = siteConfig.promotions || {};
+            renderSiteFromConfig();
+            renderAnnouncements(siteConfig.announcements || []);
+        }
+
+        // Builds the gallery cards and the PDF document cards straight from promoConfig,
+        // in ascending order of each promotion's "number". Re-run this after any admin edit.
+        function renderSiteFromConfig() {
+            const sortedKeys = Object.keys(promoConfig).sort((a, b) => promoConfig[a].number - promoConfig[b].number);
+
+            galleryData = {};
+            const galleryGrid = document.getElementById('gallery-grid');
+            const pdfContainer = document.getElementById('pdf-container');
+            galleryGrid.innerHTML = '';
+            pdfContainer.innerHTML = '';
+
+            sortedKeys.forEach(key => {
+                const cfg = promoConfig[key];
+                const images = cfg.images && cfg.images.length ? cfg.images : [];
+                galleryData[key] = {
+                    title: { en: `${cfg.labelEn} (${cfg.years})`, fr: `${cfg.labelFr} (${cfg.years})` },
+                    images: images
+                };
+
+                // --- Gallery card ---
+                const coverSrc = images[0] || 'logo.png';
+                const card = document.createElement('div');
+                card.className = 'gallery-item';
+                card.onclick = () => openLightbox(key);
+                card.innerHTML = `
+                    <div class="img-wrapper">
+                        <img src="${coverSrc}" alt="Photo ${cfg.labelFr}" class="promo-img" id="cover-${key}"
+                             onerror="this.onerror=null;this.src='logo.png';this.style.objectFit='contain';this.style.padding='40px';this.style.background='var(--bg-light)';">
+                        <div class="img-overlay">
+                            <i class="fas fa-images"></i>
+                            <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none;"' : ''}>View Photos</span>
+                            <span class="lang-fr" ${currentLang !== 'fr' ? 'style="display:none;"' : ''}>Voir les Photos</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>
+                            <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none;"' : ''}>${cfg.labelEn}</span>
+                            <span class="lang-fr" ${currentLang !== 'fr' ? 'style="display:none;"' : ''}>${cfg.labelFr}</span>
+                        </h4>
+                        <p>${cfg.years}</p>
+                    </div>`;
+                galleryGrid.appendChild(card);
+
+                // --- PDF document card (only rendered at all when turned on) ---
+                if (cfg.pdfEnabled !== false) {
+                    const pdfPath = `promo${cfg.number}.pdf`;
+                    const titleEn = `${cfg.labelEn} (${cfg.years})`;
+                    const titleFr = `${cfg.labelFr} (${cfg.years})`;
+                    const viewer = document.createElement('div');
+                    viewer.className = 'pdf-viewer';
+                    viewer.setAttribute('data-promo', key);
+                    viewer.innerHTML = `
+                        <div class="pdf-header">
+                            <h3>
+                                <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none;"' : ''}>${titleEn}</span>
+                                <span class="lang-fr" ${currentLang !== 'fr' ? 'style="display:none;"' : ''}>${titleFr}</span>
+                            </h3>
+                            <a href="${pdfPath}" download class="download-btn">
+                                <i class="fas fa-download"></i>
+                                <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none;"' : ''}>Download</span>
+                                <span class="lang-fr" ${currentLang !== 'fr' ? 'style="display:none;"' : ''}>Télécharger</span>
+                            </a>
+                        </div>
+                        <div class="pdf-preview-wrapper" onclick="openPdfViewer('${pdfPath}', '${titleEn.replace(/'/g, "\\'")}', '${titleFr.replace(/'/g, "\\'")}')">
+                            <iframe src="${pdfPath}" class="pdf-iframe" frameborder="0"></iframe>
+                            <div class="pdf-preview-overlay">
+                                <i class="fas fa-expand"></i>
+                                <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none;"' : ''}>Click to expand</span>
+                                <span class="lang-fr" ${currentLang !== 'fr' ? 'style="display:none;"' : ''}>Cliquer pour agrandir</span>
+                            </div>
+                        </div>`;
+                    pdfContainer.appendChild(viewer);
+                }
+            });
+
+            initCoverSlideshows();
+        }
+
+        loadSiteConfig();
+
+        // --- Gallery card preview: cycles through the pictures in an infinite loop ---
+        // Clicking the card still opens the full lightbox window (see openLightbox above/below).
+        const COVER_AUTOPLAY_DELAY = 3000; // ms between preview photo changes
+        const coverIndexes = {};
+        let coverTimers = {};
+
+        function initCoverSlideshows() {
+            // Clear any timers from a previous render (e.g. after a config reload)
+            Object.values(coverTimers).forEach(t => clearInterval(t));
+            coverTimers = {};
+
+            Object.keys(galleryData).forEach(key => {
+                coverIndexes[key] = 0;
+                const total = galleryData[key].images.length;
+                if (total > 1) {
+                    coverTimers[key] = setInterval(() => {
+                        coverIndexes[key] = (coverIndexes[key] + 1) % total;
+                        setCoverImage(key, coverIndexes[key]);
+                    }, COVER_AUTOPLAY_DELAY);
+                }
+            });
+        }
+
+        function setCoverImage(key, index) {
+            const imgEl = document.getElementById('cover-' + key);
+            if (!imgEl) return;
+            imgEl.style.opacity = 0;
+            setTimeout(() => {
+                imgEl.src = galleryData[key].images[index];
+                imgEl.style.opacity = 1;
+            }, 350);
+        }
+
+        // --- Announcements Carousel Script ---
+        let announcements = [];
+        let currentAnnouncementIndex = 0;
+        let announcementTimer = null;
+        const ANNOUNCEMENT_DELAY = 4500; // ms between announcement slides
+
+        function renderAnnouncements(list) {
+            announcements = Array.isArray(list) ? list : [];
+            const section = document.getElementById('announcements');
+
+            if (!announcements.length) {
+                section.style.display = 'none';
+                stopAnnouncementAutoplay();
+                return;
+            }
+
+            section.style.display = '';
+            currentAnnouncementIndex = 0;
+            buildAnnouncementDots();
+            showAnnouncement(0);
+            startAnnouncementAutoplay();
+
+            // Nav arrows and dots only make sense with more than one announcement
+            const showControls = announcements.length > 1;
+            document.querySelectorAll('.announcement-nav').forEach(btn => btn.style.display = showControls ? 'flex' : 'none');
+            document.getElementById('announcement-dots').style.display = showControls ? 'flex' : 'none';
+        }
+
+        function buildAnnouncementDots() {
+            const dotsContainer = document.getElementById('announcement-dots');
+            dotsContainer.innerHTML = '';
+            announcements.forEach((a, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'announcement-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to announcement ' + (i + 1));
+                dot.onclick = () => goToAnnouncement(i);
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function showAnnouncement(index) {
+            const a = announcements[index];
+            if (!a) return;
+            const img = document.getElementById('announcement-img');
+            img.style.opacity = 0;
+            setTimeout(() => {
+                img.src = a.image || 'logo.png';
+                img.alt = a.titleEn || a.titleFr || 'Announcement';
+                document.getElementById('announcement-title-en').textContent = a.titleEn || '';
+                document.getElementById('announcement-title-fr').textContent = a.titleFr || '';
+                document.getElementById('announcement-title-link').href = a.link || '#';
+                img.style.opacity = 1;
+            }, 300);
+
+            document.querySelectorAll('.announcement-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+
+        // direction: +1 next, -1 previous. Wraps around infinitely in both directions.
+        function changeAnnouncement(direction, userTriggered) {
+            if (!announcements.length) return;
+            currentAnnouncementIndex = (currentAnnouncementIndex + direction + announcements.length) % announcements.length;
+            showAnnouncement(currentAnnouncementIndex);
+            if (userTriggered) startAnnouncementAutoplay(); // reset the timer after a manual click
+        }
+
+        function goToAnnouncement(index) {
+            currentAnnouncementIndex = index;
+            showAnnouncement(index);
+            startAnnouncementAutoplay();
+        }
+
+        function startAnnouncementAutoplay() {
+            stopAnnouncementAutoplay();
+            if (announcements.length > 1) {
+                announcementTimer = setInterval(() => changeAnnouncement(1), ANNOUNCEMENT_DELAY);
+            }
+        }
+
+        function stopAnnouncementAutoplay() {
+            if (announcementTimer) {
+                clearInterval(announcementTimer);
+                announcementTimer = null;
+            }
+        }
+
+        // Pause the auto-loop while the visitor is looking closely / hovering the carousel
+        const announcementCarouselEl = document.getElementById('announcement-carousel');
+        announcementCarouselEl.addEventListener('mouseenter', stopAnnouncementAutoplay);
+        announcementCarouselEl.addEventListener('mouseleave', startAnnouncementAutoplay);
+
+        // --- Fullscreen PDF Viewer "Window" Script ---
+        function openPdfViewer(src, titleEn, titleFr) {
+            document.getElementById('pdf-modal-iframe').src = src;
+            document.getElementById('pdf-modal-title-en').textContent = titleEn;
+            document.getElementById('pdf-modal-title-fr').textContent = titleFr;
+            document.getElementById('pdf-modal-download').setAttribute('href', src);
+            document.getElementById('pdf-lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfViewer() {
+            document.getElementById('pdf-lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('pdf-modal-iframe').src = ''; // stop rendering the PDF once closed
+        }
+
+        // Close when clicking the dark backdrop (outside the window)
+        document.getElementById('pdf-lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closePdfViewer();
+        });
+
+        let currentGallery = null;
+        let currentIndex = 0;
+        let autoplayTimer = null;
+        const AUTOPLAY_DELAY = 3500; // ms between slides
+
+        function openLightbox(key) {
+            currentGallery = galleryData[key];
+            if (!currentGallery) return;
+            currentIndex = 0;
+            renderLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            startAutoplay();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+            currentGallery = null;
+            stopAutoplay();
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            if (currentGallery && currentGallery.images.length > 1) {
+                autoplayTimer = setInterval(() => changeSlide(1), AUTOPLAY_DELAY);
+            }
+        }
+
+        function stopAutoplay() {
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+                autoplayTimer = null;
+            }
+        }
+
+        // direction: +1 next, -1 previous. Wraps around infinitely in both directions.
+        function changeSlide(direction, userTriggered) {
+            if (!currentGallery) return;
+            const total = currentGallery.images.length;
+            currentIndex = (currentIndex + direction + total) % total;
+            renderLightbox();
+            if (userTriggered) startAutoplay(); // reset the timer after a manual click
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            renderLightbox();
+            startAutoplay();
+        }
+
+        function renderLightbox() {
+            if (!currentGallery) return;
+            const total = currentGallery.images.length;
+
+            document.getElementById('lightbox-img').src = currentGallery.images[currentIndex];
+            document.getElementById('lightbox-title').textContent = currentGallery.title[currentLang];
+            document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + total;
+
+            // Nav arrows only make sense with more than one photo
+            document.querySelectorAll('.lightbox-nav').forEach(btn => {
+                btn.style.display = total > 1 ? 'flex' : 'none';
+            });
+
+            // Thumbnail strip
+            const thumbsContainer = document.getElementById('lightbox-thumbs');
+            thumbsContainer.innerHTML = '';
+            if (total > 1) {
+                currentGallery.images.forEach((src, i) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.className = 'lightbox-thumb' + (i === currentIndex ? ' active' : '');
+                    thumb.alt = 'thumbnail ' + (i + 1);
+                    thumb.onclick = () => goToSlide(i);
+                    thumbsContainer.appendChild(thumb);
+                });
+                thumbsContainer.style.display = 'flex';
+            } else {
+                thumbsContainer.style.display = 'none';
+            }
+        }
+
+        // Close when clicking the dark backdrop (outside the window)
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Keyboard support: Escape to close, arrows to navigate
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('pdf-lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closePdfViewer();
+                return;
+            }
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeSlide(-1, true);
+            if (e.key === 'ArrowRight') changeSlide(1, true);
+        });
+
+        // Pause the auto-loop while the visitor is looking closely / hovering the window
+        const lightboxWindowEl = document.querySelector('.lightbox-window');
+        lightboxWindowEl.addEventListener('mouseenter', stopAutoplay);
+        lightboxWindowEl.addEventListener('mouseleave', startAutoplay);
+
+        // --- Dark Mode Script ---
+        const themeBtn = document.getElementById('theme-btn');
+        const themeText = document.getElementById('theme-text');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        // Load saved theme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            enableDarkMode();
+        }
+
+        function toggleTheme() {
+            if (body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+
+        function enableDarkMode() {
+            body.classList.add('dark-mode');
+            themeText.textContent = 'Light';
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        function disableDarkMode() {
+            body.classList.remove('dark-mode');
+            themeText.textContent = 'Dark';
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    </script>
+
+</body>
+</html>
