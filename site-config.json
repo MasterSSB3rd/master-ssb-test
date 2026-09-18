@@ -43,6 +43,14 @@
                 "promo-3-pic-9.jpg",
                 "promo-3-pic-10.jpg"
             ]
+        },
+        "promo4": {
+            "number": 4,
+            "labelEn": "4th Class",
+            "labelFr": "4ème Promotion",
+            "years": "",
+            "pdfEnabled": false,
+            "images": []
         }
     },
     "announcements": [
