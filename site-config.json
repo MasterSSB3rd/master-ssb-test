@@ -18,7 +18,10 @@
         "years": "2024 - 2026",
         "pdfEnabled": false,
         "images": [
-            "promo-2-pic-1.jpg"
+            "promo-2-pic-1.jpg",
+            "promo-2-pic-2.jpg",
+            "promo-2-pic-3.jpg",
+            "promo-2-pic-4.jpg"
         ]
     },
     "promo3": {
