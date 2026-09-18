@@ -6,7 +6,9 @@
             "labelFr": "1ère Promotion",
             "years": "2023 - 2025",
             "pdfEnabled": true,
-            "images": ["promo-1-pic-1.jpg"]
+            "images": [
+                "promo-1-pic-1.jpg"
+            ]
         },
         "promo2": {
             "number": 2,
@@ -14,7 +16,9 @@
             "labelFr": "2ème Promotion",
             "years": "2024 - 2026",
             "pdfEnabled": true,
-            "images": ["promo-2-pic-1.jpg"]
+            "images": [
+                "promo-2-pic-1.jpg"
+            ]
         },
         "promo3": {
             "number": 3,
@@ -22,7 +26,9 @@
             "labelFr": "3ème Promotion",
             "years": "2025 - 2027",
             "pdfEnabled": true,
-            "images": ["promo-3-pic-1.jpg"]
+            "images": [
+                "promo-3-pic-1.jpg"
+            ]
         }
     },
     "announcements": []
