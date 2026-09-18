@@ -71,6 +71,12 @@
             "titleEn": "Join to our Linkedin",
             "titleFr": "Rejoignez-nous sur LinkedIn",
             "link": "https://www.linkedin.com/company/master-sciences-de-la-sant%C3%A9-et-biotechnologies-fsac/"
+        },
+        {
+            "image": "announcement-4.jpg",
+            "titleEn": "",
+            "titleFr": "",
+            "link": "https://masterssb3rd.github.io/register/"
         }
     ]
 }
